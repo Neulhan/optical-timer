@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>optical timer</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Optical Timer</h1>
+    <div class="link-wrapper">
+      <a
+        download
+        href="https://s3.console.aws.amazon.com/s3/object/optical-timer?region=ap-northeast-2&prefix=optical-timer-darwin-x64-1.0.0.zip"
+        >MacOS 다운로드</a
+      >
+      <a
+        download
+        href="https://optical-timer.s3.ap-northeast-2.amazonaws.com/optical-timer-win32-x64.zip"
+        >windows 다운로드</a
+      >
+    </div>
+    <canvas id="bg-canvas"></canvas>
+    <script>
+      window.addEventListener("load", () => {
+        const canvas = document.getElementById("bg-canvas");
+        const ctx = canvas.getContext("2d");
+        const stageWidth = document.body.clientWidth;
+        const stageHeight = document.body.clientHeight;
+        canvas.width = stageWidth;
+        canvas.height = stageHeight;
+        let A = [stageWidth, stageHeight / 2];
+        let B = [stageWidth, stageHeight];
+        let C = [stageWidth / 3, stageHeight];
+        const update = (t) => {
+          A[1] += Math.cos(t / 1000) * Math.PI;
+          C[0] += Math.sin(t / 1000) * Math.PI;
+        };
+        const draw = () => {
+          ctx.beginPath();
+          ctx.fillStyle = "#ff3300";
+          ctx.moveTo(...A);
+          ctx.lineTo(...B);
+          ctx.lineTo(...C);
+          ctx.lineTo(...A);
+          ctx.fill();
+        };
+
+        const animate = (t) => {
+          ctx.clearRect(0, 0, stageWidth, stageHeight);
+          update(t);
+          draw();
+          requestAnimationFrame(animate);
+        };
+
+        requestAnimationFrame(animate);
+      });
+    </script>
+  </body>
+</html>
