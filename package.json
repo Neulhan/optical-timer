@@ -3,7 +3,7 @@
   "productName": "optical-timer",
   "version": "1.0.0",
   "description": "Optical Timer desktop app",
-  "homepage": "https://neulhan.github.io/optical-timer/",
+  "homepage": "https://Neulhan.github.io/optical-timer/",
   "main": "src/index.js",
   "scripts": {
     "start": "concurrently \"npm:svelte-dev\" \"electron-forge start\"",
