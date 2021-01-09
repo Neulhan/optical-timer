@@ -41,20 +41,30 @@
         top: 8px;
         left: 8px;
     }
-    .hide {
-        display: none;
+    .time {
+        font-size: 20px;
+        padding: 4px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .line {
         display: flex;
         height: 30px;
         margin-bottom: 8px;
     }
-    .line > .display,
     .line > button  {
         height: 100%;
         width: 30px;
         height: 30px;
     }
+    .line > .display {
+        height: 100%;
+        width: 45px;
+        height: 30px;
+    }
+
     button {
         background-color: transparent;
         border: 1px solid white;
@@ -73,7 +83,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-weight: 700;
     }
     .start-btn {
         width: 100%;
@@ -82,21 +91,29 @@
     }
 </style>
 
-<div class="controler" class:hide={inProgress}>
-    <div class="line">
-        <button on:click={() => {down(hourStore)}}>-</button>
-        <div class="display">{$hourStore}</div>
-        <button on:click={() => {up(hourStore)}}>+</button>
-    </div>
-    <div class="line">
-        <button on:click={() => {down(minuteStore)}}>-</button>
-        <div class="display">{$minuteStore}</div>
-        <button on:click={() => {up(minuteStore)}}>+</button>
-    </div>
-    <div class="line">
-        <button on:click={() => {down(secondStore)}}>-</button>
-        <div class="display">{$secondStore}</div>
-        <button on:click={() => {up(secondStore)}}>+</button>
-    </div>
-    <button class="start-btn" on:click={start}>START</button>
+<div class="controler">
+    {#if inProgress}
+        <div class="time">
+            {$hourStore ? $hourStore + "h" : ""} 
+            {$minuteStore ? $minuteStore + "m" : ""} 
+            {$secondStore ? $secondStore + "s" : ""} 
+        </div>
+    {:else}
+        <div class="line">
+            <button on:click={() => {down(hourStore)}}>-</button>
+            <div class="display">{$hourStore}h</div>
+            <button on:click={() => {up(hourStore)}}>+</button>
+        </div>
+        <div class="line">
+            <button on:click={() => {down(minuteStore)}}>-</button>
+            <div class="display">{$minuteStore}m</div>
+            <button on:click={() => {up(minuteStore)}}>+</button>
+        </div>
+        <div class="line">
+            <button on:click={() => {down(secondStore)}}>-</button>
+            <div class="display">{$secondStore}s</div>
+            <button on:click={() => {up(secondStore)}}>+</button>
+        </div>
+        <button class="start-btn" on:click={start}>START</button>
+    {/if}
 </div>
