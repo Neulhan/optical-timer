@@ -44,6 +44,10 @@ a {
 a:hover {
   background-color: #2266ff;
 }
+a[disabled] {
+  background-color: #a0a0a0;
+  cursor: no-drop;
+}
 
 .link-wrapper {
   display: flex;
