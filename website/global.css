@@ -48,3 +48,8 @@ a:hover {
 .link-wrapper {
   display: flex;
 }
+
+.sub-title {
+  font-size: 17px;
+  font-weight: 100;
+}
