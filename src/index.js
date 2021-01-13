@@ -21,17 +21,16 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: true,
     },
+    alwaysOnTop: true,
+    // frame: false,/
+    // titleBarStyle: "hidden",
     icon: path.join(__dirname, "./assets/icons/png/64x64.png"),
   });
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, "../public/index.html"));
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
-
-  try {
-    mainWindow.setalwaysontop("true");
-  } catch (e) {}
+  // mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
