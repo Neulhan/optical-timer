@@ -22,7 +22,18 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "./src/assets/icons/mac/icon.icns"
+        "icon": "./src/assets/icons/mac/icon.icns",
+        "osxSign": {
+          "identity": "Developer ID Application: Shin Hangyul (5ND298FD5R)",
+          "hardened-runtime": true,
+          "entitlements": "./entitlements.plist",
+          "entitlements-inherit": "./entitlements.plist",
+          "signature-flags": "library"
+        },
+        "osxNotarize": {
+          "appleId": "sting7675@gmail.com",
+          "appleIdPassword": "yrsf-ehsr-iybb-vgkx"
+        }
       },
       "makers": [
         {
@@ -45,6 +56,7 @@
     }
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "electron-reload": "^1.5.0",
     "electron-squirrel-startup": "^1.0.0",
     "sirv-cli": "^0.4.4"
